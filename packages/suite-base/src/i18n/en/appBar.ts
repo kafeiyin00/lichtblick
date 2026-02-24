@@ -6,14 +6,10 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 export const appBar = {
-  about: "About",
   addPanel: "Add panel",
-  documentation: "Documentation",
-  exploreSampleData: "Explore sample data",
   exportLayoutToFile: "Export layout to file…",
   extensions: "Extensions",
   file: "File",
-  help: "Help",
   hideLeftSidebar: "Hide left sidebar",
   hideRightSidebar: "Hide right sidebar",
   importLayoutFromFile: "Import layout from file…",

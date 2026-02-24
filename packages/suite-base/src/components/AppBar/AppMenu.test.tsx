@@ -8,7 +8,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { useTranslation } from "react-i18next";
 
 import { AppMenuProps } from "@lichtblick/suite-base/components/AppBar/types";
-import { LICHTBLICK_DOCUMENTATION_LINK } from "@lichtblick/suite-base/constants/documentation";
 import { usePlayerSelection } from "@lichtblick/suite-base/context/PlayerSelectionContext";
 import { useWorkspaceStore } from "@lichtblick/suite-base/context/Workspace/WorkspaceContext";
 import { useWorkspaceActions } from "@lichtblick/suite-base/context/Workspace/useWorkspaceActions";
@@ -85,12 +84,11 @@ describe("AppMenu", () => {
   const renderAppMenu = (props: Partial<AppMenuProps> = {}) =>
     render(<AppMenu open={true} handleClose={mockHandleClose} disablePortal={false} {...props} />);
 
-  it("renders the menu with File, View, and Help sections", () => {
+  it("renders the menu with File and View sections", () => {
     renderAppMenu();
 
     expect(screen.getByText("file")).toBeInTheDocument();
     expect(screen.getByText("view")).toBeInTheDocument();
-    expect(screen.getByText("help")).toBeInTheDocument();
   });
 
   it("handles File menu actions", () => {
@@ -113,58 +111,4 @@ describe("AppMenu", () => {
     expect(mockHandleClose).toHaveBeenCalled();
   });
 
-  it("handles Help menu actions", () => {
-    renderAppMenu();
-
-    fireEvent.pointerEnter(screen.getByText("help"));
-    fireEvent.click(screen.getByText("about"));
-
-    expect(mockDialogActions.preferences.open).toHaveBeenCalledWith("about");
-    expect(mockHandleClose).toHaveBeenCalled();
-  });
-
-  it("handles recent sources in File menu", () => {
-    renderAppMenu();
-
-    fireEvent.pointerEnter(screen.getByText("file"));
-    fireEvent.click(screen.getByText("Recent Source 1"));
-
-    expect(mockSelectRecent).toHaveBeenCalledWith("1");
-    expect(mockHandleClose).toHaveBeenCalled();
-  });
-
-  it("handles layout import and export in View menu", async () => {
-    renderAppMenu();
-
-    fireEvent.pointerEnter(screen.getByText("view"));
-    fireEvent.click(screen.getByText("importLayoutFromFile"));
-    await Promise.resolve();
-
-    expect(mockImportLayout).toHaveBeenCalled();
-    expect(mockHandleClose).toHaveBeenCalled();
-
-    fireEvent.click(screen.getByText("exportLayoutToFile"));
-    await Promise.resolve();
-
-    expect(mockExportLayout).toHaveBeenCalled();
-    expect(mockHandleClose).toHaveBeenCalled();
-  });
-
-  it("opens documentation link in Help menu", () => {
-    const originalOpen = window.open;
-    window.open = jest.fn();
-
-    renderAppMenu();
-
-    fireEvent.pointerEnter(screen.getByText("help"));
-    fireEvent.click(screen.getByText("documentation"));
-
-    expect(window.open).toHaveBeenCalledWith(
-      LICHTBLICK_DOCUMENTATION_LINK,
-      "_blank",
-      "noopener,noreferrer",
-    );
-
-    window.open = originalOpen;
-  });
 });

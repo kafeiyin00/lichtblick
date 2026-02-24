@@ -18,10 +18,8 @@ import {
   FormControlLabel,
   FormLabel,
   IconButton,
-  Link,
   Tab,
   Tabs,
-  Typography,
   useMediaQuery,
 } from "@mui/material";
 import { MouseEvent, SyntheticEvent, useState } from "react";
@@ -29,12 +27,9 @@ import { useTranslation } from "react-i18next";
 
 import { AppSetting } from "@lichtblick/suite-base/AppSetting";
 import { useStyles } from "@lichtblick/suite-base/components/AppSettingsDialog/AppSettingsDialog.style";
-import { APP_SETTINGS_ABOUT_ITEMS } from "@lichtblick/suite-base/components/AppSettingsDialog/constants";
 import { AppSettingsTab } from "@lichtblick/suite-base/components/AppSettingsDialog/types";
-import CopyButton from "@lichtblick/suite-base/components/CopyButton";
 import { ExperimentalFeatureSettings } from "@lichtblick/suite-base/components/ExperimentalFeatureSettings";
 import ExtensionsSettings from "@lichtblick/suite-base/components/ExtensionsSettings";
-import LichtblickLogoText from "@lichtblick/suite-base/components/LichtblickLogoText";
 import Stack from "@lichtblick/suite-base/components/Stack";
 import { useAppContext } from "@lichtblick/suite-base/context/AppContext";
 import {
@@ -113,7 +108,6 @@ export function AppSettingsDialog(
             label={t("experimentalFeatures")}
             value="experimental-features"
           />
-          <Tab className={classes.tab} label={t("about")} value="about" />
         </Tabs>
         <Stack direction="row" fullHeight overflowY="auto" style={{ scrollbarGutter: "stable" }}>
           <section
@@ -173,43 +167,6 @@ export function AppSettingsDialog(
             </Stack>
           </section>
 
-          <section
-            className={cx(classes.tabPanel, { [classes.tabPanelActive]: activeTab === "about" })}
-          >
-            <Stack gap={2} alignItems="flex-start">
-              <header>
-                <LichtblickLogoText color="primary" className={classes.logo} />
-              </header>
-              <Stack direction="row" alignItems="center" gap={1}>
-                <Typography variant="body2">
-                  Lichtblick version {LICHTBLICK_SUITE_VERSION}
-                </Typography>
-                <CopyButton
-                  size="small"
-                  getText={() => LICHTBLICK_SUITE_VERSION?.toString() ?? ""}
-                />
-              </Stack>
-              {Array.from(APP_SETTINGS_ABOUT_ITEMS.values()).map((item) => {
-                return (
-                  <Stack key={item.subheader} gap={1}>
-                    {item.subheader && <Typography>{item.subheader}</Typography>}
-                    {item.links.map((link) => (
-                      <Link
-                        variant="body2"
-                        underline="hover"
-                        key={link.title}
-                        data-testid={link.title}
-                        href={link.url}
-                        target="_blank"
-                      >
-                        {link.title}
-                      </Link>
-                    ))}
-                  </Stack>
-                );
-              })}
-            </Stack>
-          </section>
         </Stack>
       </div>
       <DialogActions className={classes.dialogActions}>
