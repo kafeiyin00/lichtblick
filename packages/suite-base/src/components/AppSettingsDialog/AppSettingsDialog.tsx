@@ -29,9 +29,7 @@ import { AppSetting } from "@lichtblick/suite-base/AppSetting";
 import { useStyles } from "@lichtblick/suite-base/components/AppSettingsDialog/AppSettingsDialog.style";
 import { AppSettingsTab } from "@lichtblick/suite-base/components/AppSettingsDialog/types";
 import { ExperimentalFeatureSettings } from "@lichtblick/suite-base/components/ExperimentalFeatureSettings";
-import ExtensionsSettings from "@lichtblick/suite-base/components/ExtensionsSettings";
 import Stack from "@lichtblick/suite-base/components/Stack";
-import { useAppContext } from "@lichtblick/suite-base/context/AppContext";
 import {
   useWorkspaceStore,
   WorkspaceContextStore,
@@ -69,8 +67,6 @@ export function AppSettingsDialog(
   const { classes, cx, theme } = useStyles();
   const smUp = useMediaQuery(theme.breakpoints.up("sm"));
 
-  const { extensionSettings } = useAppContext();
-
   // automatic updates are a desktop-only setting
   const supportsAppUpdates = isDesktopApp();
 
@@ -83,8 +79,6 @@ export function AppSettingsDialog(
       props.onClose(event, "backdropClick");
     }
   };
-
-  const extensionSettingsComponent = extensionSettings ?? <ExtensionsSettings />;
 
   return (
     <Dialog {...props} fullWidth maxWidth="md" data-testid={`AppSettingsDialog--${activeTab}`}>
@@ -102,7 +96,6 @@ export function AppSettingsDialog(
           onChange={handleTabChange}
         >
           <Tab className={classes.tab} label={t("general")} value="general" />
-          <Tab className={classes.tab} label={t("extensions")} value="extensions" />
           <Tab
             className={classes.tab}
             label={t("experimentalFeatures")}
@@ -142,14 +135,6 @@ export function AppSettingsDialog(
                 />
               </Stack>
             </Stack>
-          </section>
-
-          <section
-            className={cx(classes.tabPanel, {
-              [classes.tabPanelActive]: activeTab === "extensions",
-            })}
-          >
-            <Stack gap={2}>{extensionSettingsComponent}</Stack>
           </section>
 
           <section

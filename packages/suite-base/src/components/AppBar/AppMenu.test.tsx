@@ -95,9 +95,13 @@ describe("AppMenu", () => {
     renderAppMenu();
 
     fireEvent.pointerEnter(screen.getByText("file"));
-    fireEvent.click(screen.getByText("open"));
+    fireEvent.click(screen.getByText("openConnection"));
 
-    expect(mockDialogActions.dataSource.open).toHaveBeenCalledWith("start");
+    expect(mockDialogActions.dataSource.open).toHaveBeenCalledWith("connection");
+
+    fireEvent.click(screen.getByText("openLocalFiles"));
+
+    expect(mockDialogActions.openFile.open).toHaveBeenCalled();
     expect(mockHandleClose).toHaveBeenCalled();
   });
 

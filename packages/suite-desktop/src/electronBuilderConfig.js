@@ -15,30 +15,34 @@ const path = require("path");
 function makeElectronBuilderConfig(params) {
   return {
     electronVersion,
-    appId: "dev.lichtblick.suite",
+    appId: "dev.certaintyX.suite",
     npmRebuild: false,
     asar: true,
     directories: {
       app: params.appPath,
       buildResources: path.join(__dirname, "../resources"),
     },
-    artifactName: "${name}-${version}-${os}-${arch}.${ext}",
+    artifactName: "certaintyX-${version}-${os}-${arch}.${ext}",
     afterPack: path.resolve(__dirname, "afterPack.ts"),
-    icon: path.join(__dirname, "../resources/icon/icon.icns"),
+    icon: path.join(__dirname, "../resources/icon/icon.png"),
     protocols: [
       {
-        name: "lichtblick",
-        schemes: ["lichtblick"],
+        name: "certaintyX",
+        schemes: ["certaintyX"],
       },
     ],
     linux: {
       target: [
+        // {
+        //   target: "deb",
+        //   arch: ["x64", "arm64"],
+        // },
+        // {
+        //   target: "tar.gz",
+        //   arch: ["x64", "arm64"],
+        // },
         {
-          target: "deb",
-          arch: ["x64", "arm64"],
-        },
-        {
-          target: "tar.gz",
+          target: "AppImage",
           arch: ["x64", "arm64"],
         },
       ],
@@ -63,7 +67,7 @@ function makeElectronBuilderConfig(params) {
     win: {
       target: [
         {
-          target: "nsis",
+          target: "portable",
           arch: ["x64", "arm64"],
         },
       ],
@@ -92,7 +96,7 @@ function makeElectronBuilderConfig(params) {
         arch: ["universal"],
       },
       category: "public.app-category.developer-tools",
-      icon: path.join(__dirname, "../resources/icon/icon.icns"),
+      icon: path.join(__dirname, "../resources/icon/icon.png"),
       entitlements: path.join(__dirname, "../resources/mac/entitlements.plist"),
       entitlementsInherit: path.join(__dirname, "../resources/mac/entitlements.plist"),
       extraFiles: [

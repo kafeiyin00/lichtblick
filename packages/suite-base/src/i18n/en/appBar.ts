@@ -6,7 +6,9 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/
 
 export const appBar = {
+  about: "About",
   addPanel: "Add panel",
+  exploreSampleData: "Explore sample data",
   exportLayoutToFile: "Export layout to file…",
   extensions: "Extensions",
   file: "File",
@@ -18,7 +20,6 @@ export const appBar = {
     "You are currently offline. Remote features like layouts, extensions and MCAP files from namespace '{{namespace}}' may not work properly. Please check your internet connection.",
   networkStatusOnline: "Online",
   noDataSource: "No data source",
-  open: "Open…",
   openConnection: "Open connection…",
   openDataSources: "Open data sources",
   openLocalFiles: "Open local file(s)…",

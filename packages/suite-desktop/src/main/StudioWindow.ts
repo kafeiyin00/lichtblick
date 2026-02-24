@@ -255,14 +255,6 @@ function buildMenu(browserWindow: BrowserWindow): Menu {
       },
       { type: "separator" },
       {
-        id: "open",
-        label: t("appBar:open"),
-        click: async () => {
-          await simulateUserClick(browserWindow);
-          sendNativeAppMenuEvent("open", browserWindow);
-        },
-      },
-      {
         id: "openLocalFile",
         label: t("appBar:openLocalFiles"),
         click: async () => {

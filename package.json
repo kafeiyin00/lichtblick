@@ -1,21 +1,21 @@
 {
-  "name": "lichtblick",
+  "name": "CertaintyX",
   "version": "1.23.1",
   "license": "MPL-2.0",
   "private": true,
-  "productName": "Lichtblick",
-  "description": "Core components of Lichtblick",
-  "productDescription": "Lichtblick Suite",
+  "productName": "CertaintyX",
+  "description": "Core components of CertaintyX Suite",
+  "productDescription": "CertaintyX Suite",
   "packageManager": "yarn@3.6.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lichtblick-suite/lichtblick.git"
+    "url": " "
   },
   "author": {
-    "name": "Lichtblick",
-    "email": "lichtblick@bmwgroup.com"
+    "name": "CertaintyX",
+    "email": " "
   },
-  "homepage": "https://github.com/lichtblick-suite",
+  "homepage": " ",
   "engines": {
     "node": ">=20"
   },

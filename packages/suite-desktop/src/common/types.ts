@@ -7,7 +7,6 @@
 
 // Events that are forwarded from the main process
 export type ForwardedMenuEvent =
-  | "open"
   | "open-file"
   | "open-connection"
   | "open-demo"

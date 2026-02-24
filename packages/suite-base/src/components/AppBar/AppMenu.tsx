@@ -55,16 +55,6 @@ export function AppMenu(props: AppMenuProps): React.JSX.Element {
     const items: AppBarMenuItem[] = [
       {
         type: "item",
-        label: t("open"),
-        key: "open",
-        dataTestId: "menu-item-open",
-        onClick: () => {
-          dialogActions.dataSource.open("start");
-          handleNestedMenuClose();
-        },
-      },
-      {
-        type: "item",
         label: t("openLocalFiles"),
         key: "open-file",
         shortcut: formatKeyboardShortcut("O", ["Meta"]),

@@ -75,13 +75,6 @@ export function SettingsMenu({
         >
           {t("settings")}
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            onSettingsClick("extensions");
-          }}
-        >
-          {t("extensions")}
-        </MenuItem>
       </Menu>
     </>
   );

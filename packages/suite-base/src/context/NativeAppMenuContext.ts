@@ -8,7 +8,6 @@
 import { createContext } from "react";
 
 export type NativeAppMenuEvent =
-  | "open"
   | "open-file"
   | "open-connection"
   | "open-demo"

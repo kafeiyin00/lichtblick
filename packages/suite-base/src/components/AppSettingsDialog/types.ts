@@ -4,5 +4,4 @@
 export type AppSettingsTab =
   | "general"
   | "privacy"
-  | "extensions"
   | "experimental-features";
